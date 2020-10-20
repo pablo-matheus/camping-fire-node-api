@@ -1,0 +1,15 @@
+# NPM
+node_modules
+
+# IDE
+.idea
+.vscode
+.iml
+
+# Logs
+.logs
+logs
+log
+
+# Database
+mongo
