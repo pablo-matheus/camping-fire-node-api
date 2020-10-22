@@ -16,7 +16,7 @@
   "description": "Acampamento de Férias",
   "location": {
     "state": "SP",
-    "city": "Buceta",
+    "city": "São Paulo",
     "address": "R. Alberto Nascimento Júnior, 178 - Jardim Bonfiglioli, 05595-040"
   },
   "contact": 1129223922
