@@ -3,32 +3,54 @@ const Camping = require('../models/campingModel');
 const campingController = {};
 
 campingController.listAll = (req, res) => {
-  if (req.query.state && req.query.city) {
-    Camping.find({ 'location.state': req.query.state, 'location.city': req.query.city })
+  const state = req.query.state;
+  const city = req.query.city;
+
+  if (state && city) {
+    console.log(`Finding campings by state [${state}] and city [${city}]`);
+
+    Camping.find({
+      'location.state': { $regex: state, $options: 'i' },
+      'location.city': { $regex: city, $options: 'i' }
+    })
       .then((campings) => res.send(campings))
       .catch(() => res.sendStatus(400));
-    return console.log(`Finding by state [${req.query.state}] and city [${req.query.city}]`);
+
+    return;
   }
-  if (req.query.state) {
-    Camping.find({ 'location.state': req.query.state })
+
+  if (state) {
+    console.log(`Finding campings by state [${state}]`);
+
+    Camping.find({ 'location.state': { $regex: state, $options: 'i' } })
       .then((campings) => res.send(campings))
       .catch(() => res.sendStatus(400));
-    return console.log(`Finding by state [${req.query.state}]`);
+
+    return;
   }
-  if (req.query.city) {
-    Camping.find({ 'location.city': req.query.city })
+
+  if (city) {
+    console.log(`Finding campings by city [${city}]`);
+
+    Camping.find({ 'location.city': { $regex: city, $options: 'i' } })
       .then((campings) => res.send(campings))
       .catch(() => res.sendStatus(400));
-    return console.log(`Finding by city [${req.query.city}]`);
+
+    return;
   }
+
+  console.log('Finding all');
+
   Camping.find()
     .then((campings) => res.send(campings))
     .catch(() => res.sendStatus(400));
-  return console.log('Finding all');
 };
 
 campingController.getById = (req, res) => {
   const id = req.params.id;
+
+  console.log(`Finding camping by ID [${id}]`);
+
   Camping.findById(id)
     .then((campings) => res.send(campings))
     .catch(() => res.sendStatus(400));
@@ -36,9 +58,15 @@ campingController.getById = (req, res) => {
 
 campingController.submit = (req, res) => {
   const data = req.body;
+
+  console.log('Submitting camping');
+
   if (!data) {
+    console.log('Empty body');
     res.sendStatus(400);
+    return;
   }
+
   new Camping(data).save()
     .then(() => res.sendStatus(201))
     .catch(() => res.sendStatus(400));
@@ -47,9 +75,15 @@ campingController.submit = (req, res) => {
 campingController.edit = (req, res) => {
   const id = req.params.id;
   const data = req.body;
-  if(!id || !data) {
+
+  console.log(`Editing camping with ID [${id}]`);
+
+  if (!id || !data) {
+    console.log('Empty body or ID');
     res.sendStatus(400);
+    return;
   }
+
   Camping.findByIdAndUpdate(id, data)
     .then(() => res.sendStatus(200))
     .catch(() => res.sendStatus(400));
@@ -57,6 +91,9 @@ campingController.edit = (req, res) => {
 
 campingController.remove = (req, res) => {
   const id = req.params.id;
+
+  console.log(`Removing camping with ID [${id}]`);
+
   Camping.findByIdAndRemove(id)
     .then(() => res.sendStatus(200))
     .catch(() => res.sendStatus(400));
