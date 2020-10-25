@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
+const cors = require ('cors');
 
 const index = require('./routes/index');
 const campingRoute = require('./routes/campingRoute');
@@ -16,6 +17,8 @@ mongoose.connect('mongodb://root:aid3g7g21nklan@localhost:27017/camping_fire?aut
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use(cors());
 
 app.use(helmet());
 
