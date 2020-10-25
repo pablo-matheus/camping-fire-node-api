@@ -1,11 +1,12 @@
 # Camping Fire Node API
 
-## Node
+## How to Run
 - `npm install` install all dependencies from package.json.
+- `docker-compose up`(You must be on root dir to execute this command) to initiate MongoDB and Mongo-Express.
 - `npm start` start server. 
 - `npm install <dependency> --save` install dependency and save at to package.json.
 
-## Docker
+## Mongo-Express
 - `http://localhost:8081` access to mongo-express.
 
 ## JSON
