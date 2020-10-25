@@ -2,7 +2,7 @@
 
 ## How to Run
 - `npm install` install all dependencies from package.json.
-- `docker-compose up`(you must be on root dir to execute this command) to initiate MongoDB and Mongo-Express.
+- `docker-compose up` to initiate MongoDB and Mongo-Express (you must be on root dir to execute this command).
 - `npm start` start server. 
 
 ## Important Info
