@@ -7,7 +7,7 @@
 
 ## Important Info
 - `http://localhost:8081` access to mongo-express.
-- `npm install <dependency> --save` to add new to package.json and install in your NPM.
+- `npm install <dependency> --save` to add new dependency to package.json and install in your NPM.
 
 ## JSON
 
