@@ -4,10 +4,10 @@
 - `npm install` install all dependencies from package.json.
 - `docker-compose up`(You must be on root dir to execute this command) to initiate MongoDB and Mongo-Express.
 - `npm start` start server. 
-- `npm install <dependency> --save` install dependency and save at to package.json.
 
-## Mongo-Express
+## Important Info
 - `http://localhost:8081` access to mongo-express.
+- `npm install <dependency> --save` to add new to package.json and install in your NPM.
 
 ## JSON
 
